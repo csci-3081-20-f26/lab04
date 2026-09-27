@@ -12,16 +12,8 @@ $\color{blue}{\textsf{You will need to get \textbf{Milestones 1 and 2} checked o
 4. How to use the std::vector<T> class for dynamic arrays.
 5. How to get real-time transit information about buses and trains.
 
-### Getting Started
 
-Navigate to public-lab08 in one of the development environments (VOLE / CSE Labs, SSH, Docker):
-
-```bash
-git clone https://github.umn.edu/umn-csci-3081-s26/public-lab08.git
-cd public-lab08
-```
-
-### What's in public-lab08
+### What's in lab04
 
 - Makefile:
   - This makefile is provided to automate the building of your project.  You should not need to edit this file.
@@ -31,15 +23,7 @@ cd public-lab08
 
 - TransitService.h / TransitService.cpp
   - These files contain the following classes:
-    * ```TransitService``` - Pure abstract interface that represents a transit service.
-    * ```MetroTransitAPI``` - Implements the TransitService interface and calls the Metro Transit web service directly.
-   
-- TransitServiceProxy.h / TransitServiceProxy.cpp
-  - These files contain the following classes:
-    * ```TransitServiceProxy``` - A base class for creating proxy classes through inheritance and polymorphism.
-    * ```CachedTransitServiceProxy``` - An unimplemented class placeholder for caching web service calls.
-    * ```TransitAgencyFilter``` - An unimplemented class placeholder for filtering agencies and routes from a web service.
-    * ```TransitGpsLocationProxy``` - An unimplemented class placeholder for filtering agencies and routes based on a GPS location.
+    * ```TransitService``` - Implements the TransitService interface and calls the Metro Transit web service directly.
 
 - main.cpp:
   - This file contains the main application that handles the core logic of the program.  You may edit this if you need.
@@ -55,36 +39,20 @@ cd public-lab08
 - TransitService.cpp
   - You will need to edit this file for **Milestone 2** and **Milestone 3**.
 
-- TransitServiceProxy.h
-  - You may need to edit this file to add the proxy classes ```CachedTransitServiceProxy```, ```TransitAgencyFilter```, and ```TransitGpsLocationProxy``` for **Milestones 4-6**.
-
-- TransitServiceProxy.cpp
-  - You will need to edit this file for **Milestone 4**, **Milestone 5**, and **Milestone 6**.
-
 ### Goal
 
 <hr>
   **The primary goal of this lab is to become familiar with calling web services and using the proxy pattern to remove the expensive overhead of repeating api calls and restricting access to data.**
 <hr>
 
-### The Proxy Pattern
-
-The Proxy Pattern is a design pattern that allows programmers to control access to a real object through a proxy object.  Both the proxy and the real object inherit from the same interface, except that the proxy contains a reference to the real object.  When a method is called, the proxy determines when and how the real object's method is called.  You can read more here
-
-* https://refactoring.guru/design-patterns/proxy.
-
-<img src="https://refactoring.guru/images/patterns/diagrams/proxy/structure.png?id=f2478a82a84e1a1e512a8414bf1abd1c" alt="" />
-
-In our case, we are using a proxy to cache web service calls.  For example, if we have already made a web service call that got data, we don't always need to re-download the data.  Instead we can store the data in a member variable and use the stored value instead as a cache.  In theory, the cache could expire after a period of time.  This is similar to the decorator pattern, except that the purpose is somewhat different.  Decorators add functionality to an existing object, while a proxy controls access to another object.  So the difference is in purpose, not necessarily structure.
-
 ### Getting Started
 
-Navigate to public-lab08 in one of the development environments (VOLE / CSE Labs, SSH, local).
+Navigate to lab04 in one of the development environments (VOLE / CSE Labs, SSH).
 
 You can run the program with the following commands using the provided `Makefile`.
 
 ```bash
-% cd public-lab08
+% cd lab04
 % make
 % ./transit_service
 ```
