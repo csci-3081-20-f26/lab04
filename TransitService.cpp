@@ -1,9 +1,11 @@
 #include "TransitService.h"
 #include <iostream>
 
+namespace MetroTransitAPI {
+
 //------------------- MetroTransitAPI -------------------------
 
-std::vector<Agency> MetroTransitAPI::GetAgencies() {
+std::vector<Agency> TransitService::GetAgencies() {
     std::vector<Agency> agencies;
     json result = ws.GetJSON("/nextrip/agencies");
 
@@ -21,7 +23,7 @@ std::vector<Agency> MetroTransitAPI::GetAgencies() {
 
 // **************************** Milestone 2 ****************************
 // Implement the GetRoutes() function
-std::vector<Route> MetroTransitAPI::GetRoutes() {
+std::vector<Route> TransitService::GetRoutes() {
     std::vector<Route> routes;
     
     // TODO: Get routes
@@ -32,14 +34,16 @@ std::vector<Route> MetroTransitAPI::GetRoutes() {
 
 // **************************** Milestone 3 ****************************
 // Implement GetDirecitons(...), GetStops(...), and GetStopDetail(...)
-std::vector<Direction> MetroTransitAPI::GetDirections(const std::string& routeId) {
+std::vector<Direction> TransitService::GetDirections(const std::string& routeId) {
     return std::vector<Direction>();
 }
 
-std::vector<Stop> MetroTransitAPI::GetStops(const std::string& routeId, int direction) {
+std::vector<Stop> TransitService::GetStops(const std::string& routeId, int direction) {
     return std::vector<Stop>();
 }
 
-std::vector<StopDetail> MetroTransitAPI::GetStopDetail(const std::string& routeId, int direction, const std::string& placeCode) {
+std::vector<StopDetail> TransitService::GetStopDetail(const std::string& routeId, int direction, const std::string& placeCode) {
     return std::vector<StopDetail>();
+}
+
 }

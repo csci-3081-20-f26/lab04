@@ -4,6 +4,10 @@
 #include <vector>
 #include <string>
 
+#include "WebService.h"
+
+namespace MetroTransitAPI {
+
 struct Route {
     std::string id;
     std::string name;
@@ -31,21 +35,9 @@ struct StopDetail {
     std::string nextDepartureText;
 };
 
-class ITransitService {
+class TransitService {
 public:
-    virtual ~ITransitService() {}
-    virtual std::vector<Route> GetRoutes() = 0;
-    virtual std::vector<Agency> GetAgencies() = 0;
-    virtual std::vector<Direction> GetDirections(const std::string& routeId) = 0;
-    virtual std::vector<Stop> GetStops(const std::string& routeId, int direction) = 0;
-    virtual std::vector<StopDetail> GetStopDetail(const std::string& routeId, int direction, const std::string& placeCode) = 0;
-};
-
-#include "WebService.h"
-
-class MetroTransitAPI : public ITransitService {
-public:
-    MetroTransitAPI() : ws("https://svc.metrotransit.org") {}
+    TransitService() : ws("https://svc.metrotransit.org") {}
     std::vector<Agency> GetAgencies();
     std::vector<Route> GetRoutes();
     std::vector<Direction> GetDirections(const std::string& routeId);
@@ -55,5 +47,7 @@ public:
 private:
     WebService ws;
 };
+
+}
 
 #endif

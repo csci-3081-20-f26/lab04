@@ -2,12 +2,14 @@
 #include <cstdio>
 #include "TransitService.h"
 
-void listAgencies(ITransitService& service);
-void listRoutes(ITransitService& service);
-void realTimeInfo(ITransitService& service);
+using namespace MetroTransitAPI;
+
+void listAgencies(TransitService& service);
+void listRoutes(TransitService& service);
+void realTimeInfo(TransitService& service);
 
 int main() {
-    ITransitService* service = new MetroTransitAPI();
+    TransitService* service = new TransitService();
 
     int input = -1;
 
@@ -46,14 +48,14 @@ int main() {
     delete service;
 }
 
-void listAgencies(ITransitService& service) {
+void listAgencies(TransitService& service) {
     std::vector<Agency> agencies = service.GetAgencies();
     for (int i = 0; i < agencies.size(); i++) {
         std::cout << agencies[i].id  << ": " << agencies[i].name << std::endl;
     }
 }
 
-void listRoutes(ITransitService& service) {
+void listRoutes(TransitService& service) {
     std::vector<Route> routes = service.GetRoutes();
     for (int i = 0; i < routes.size(); i++) {
         std::cout << routes[i].id  << ": " << routes[i].name << std::endl;
@@ -62,7 +64,7 @@ void listRoutes(ITransitService& service) {
 
 // **************************** Milestone 3 ****************************
 // Implement the TODO's in the following function
-void realTimeInfo(ITransitService& service) {
+void realTimeInfo(TransitService& service) {
     std::cout << "Enter a route: ";
     std::string routeId;
     std::cin >> routeId;
