@@ -1,8 +1,6 @@
-# Lab 08 - Web Services and the Proxy Pattern
+# Lab 04 - Web Services and Debugging Practice
 
-In this lab, your goal is to create a program that caches calls to a web service using the Proxy Pattern.
-
-$\color{blue}{\textsf{You will need to get \textbf{Milestones 1 and 2} checked off by a TA during lab for full credit.}}$
+In this lab, your goal is to create a program that uses a web service and practice debugging memory issues.
 
 ## What You Will Learn
 
