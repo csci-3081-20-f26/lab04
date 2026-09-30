@@ -10,26 +10,25 @@ In this lab, your goal is to create a program that uses a web service and practi
 4. How to use the std::vector<T> class for dynamic arrays.
 5. How to get real-time transit information about buses and trains.
 
-
 ### What's in lab04
 
 - Makefile:
-  - This makefile is provided to automate the building of your project.  You should not need to edit this file.
+  - This makefile is provided to automate the building of your project. You should not need to edit this file.
 
 - WebService.h / WebService.cpp
-  - These files contains the code for simplified web service calls.  You can create a web service by passing in the base url for the service (```WebService webService("https://my-api.com")```).  You can call specific methods by using ```webService.get("/path/to/method")```.  You should not need to edit this file.
+  - These files contains the code for simplified web service calls. You can create a web service by passing in the base url for the service (`WebService webService("https://my-api.com")`). You can call specific methods by using `webService.get("/path/to/method")`. You should not need to edit this file.
 
 - TransitService.h / TransitService.cpp
   - These files contain the following classes:
-    * ```TransitService``` - Implements the TransitService interface and calls the Metro Transit web service directly.
+    - `TransitService` - Implements the TransitService interface and calls the Metro Transit web service directly.
 
 - main.cpp:
-  - This file contains the main application that handles the core logic of the program.  You may edit this if you need.
+  - This file contains the main application that handles the core logic of the program. You may edit this if you need.
 
 ### What You Will Edit
 
 - main.cpp
-  - You will edit parts of this file, specifically the ```realTimeInfo(...)``` function for **Milestone 3**.
+  - You will edit parts of this file, specifically the `realTimeInfo(...)` function for **Milestone 3**.
 
 - TransitService.h
   - You will shouldn't need to edit this file.
@@ -65,7 +64,7 @@ Options:
 2: List Routes
 3: Real-Time Info
 
-Enter a selection: 
+Enter a selection:
 ```
 
 Enter `1` and you should see the following output, which is a call to the MetroTransitAPI (https://svc.metrotransit.org/swagger/index.html):
@@ -87,7 +86,7 @@ Enter a selection: 1
 <Press enter to continue>
 ```
 
-In this assignment, you will implement options 2 (Milestone 2) and 3 (Milestone 3).  
+In this assignment, you will implement options 2 (Milestone 2) and 3 (Milestone 3).
 
 You are now ready to begin the Lab!
 
@@ -95,25 +94,27 @@ You are now ready to begin the Lab!
 
 ### Milestone 1 - Swagger
 
-Swagger is a useful interface for accessing and trying out existing REST APIs.  The first milestone for this lab entails exploring the Metro Transit NextTrip API.  Navigate to the following URL:
+Swagger is a useful interface for accessing and trying out existing REST APIs. The first milestone for this lab entails exploring the Metro Transit NextTrip API. Navigate to the following URL:
 
-* [Metro Transit - NextTrip API](https://svc.metrotransit.org/swagger/index.html)
+- [Metro Transit - NextTrip API](https://svc.metrotransit.org/swagger/index.html)
 
-Investigate the various API calls.  Click on “GET /nextrip/agencies”.  What is the id for the agency for the “University of Minnesota”.  Most likely this represents buses like the Campus Connector.
+Investigate the various API calls. Click on “GET /nextrip/agencies”. What is the id for the agency for the “University of Minnesota”. Most likely this represents buses like the Campus Connector.
 
-Use the Swagger interface to find a stop for a place of interest ([Twin Cities Metropolitan Area Transit System Map](https://www.metrotransit.org/Data/Sites/1/media/pdfs/system-map.pdf)) finding a route, direction and place_code.  The following three API calls should help:
+Use the Swagger interface to find a stop for a place of interest ([Twin Cities Metropolitan Area Transit System Map](https://www.metrotransit.org/media/ns4igy1k/metro_diagrammap.pdf)) finding a route, direction and place_code. The following three API calls should help:
 
-* ```/nextrip/routes```
-* ```/nextrip/directions/{route}```
-* ```/nextrip/stops/{route}/{direction}```
+- `/nextrip/routes`
+- `/nextrip/directions/{route}`
+- `/nextrip/stops/{route}/{direction}`
 
-___
-For **Milestone 1** you should be able to understand and make web service calls using the swagger.  You should be able to execute calls to find the places of interest in the Metro Transit system.
-___
+---
+
+For **Milestone 1** you should be able to understand and make web service calls using the swagger. You should be able to execute calls to find the places of interest in the Metro Transit system.
+
+---
 
 ### Milestone 2 - List Routes
 
-For this milestone, you will use your c++ program to list the routes in our system.  This is option two in our program:
+For this milestone, you will use your c++ program to list the routes in our system. This is option two in our program:
 
 ```bash
 Options:
@@ -126,23 +127,26 @@ Options:
 Enter a selection: 2
 ```
 
-To get this to work, you will need to call the correct web services similar to the ```MetroTransitAPI::getAgencies()``` method.  It will be a different web service call and you will need to get the data using a json object returned from the web service.
+To get this to work, you will need to call the correct web services similar to the `MetroTransitAPI::getAgencies()` method. It will be a different web service call and you will need to get the data using a json object returned from the web service.
 
 The json object can be accessed several ways (similar to lists and dictionaries in python):
-* As an array: `json[5]`
-* As a dictionary object: `json["route_id"]`
-* As a int: `json["agency_id"].get<int>()`
-* As a float: `json["agency_id"].get<float>()`
-* As a string: `json["agency_name"].get<std::string>()`
-* As debug output: `std::cout << json << std::endl;`
-* As a hierarchical object (combining the above): `json[2]["departures"][0]["date"].get<std::string>()`
+
+- As an array: `json[5]`
+- As a dictionary object: `json["route_id"]`
+- As a int: `json["agency_id"].get<int>()`
+- As a float: `json["agency_id"].get<float>()`
+- As a string: `json["agency_name"].get<std::string>()`
+- As debug output: `std::cout << json << std::endl;`
+- As a hierarchical object (combining the above): `json[2]["departures"][0]["date"].get<std::string>()`
 
 [MetroTransitAPI::getAgencies()](TransitService.cpp#L6) shows an example of how to call the web service and how access the json object.
 
-Once you implement the ```MetroTransitAPI::getRoutes()``` method, option 2 should work.
+Once you implement the `MetroTransitAPI::getRoutes()` method, option 2 should work.
 
-___
+---
+
 For **Milestone 2** your output should look something like the following:
+
 ```bash
 Enter a selection: 2
 
@@ -163,11 +167,12 @@ Enter a selection: 2
 4: Route 4
 ...
 ```
-___
+
+---
 
 ### Milestone 3 - Get Real-Time Info
 
-For this milestone, you will use your c++ program to list the routes in our system.  This is option three in our program:
+For this milestone, you will use your c++ program to list the routes in our system. This is option three in our program:
 
 ```bash
 Options:
@@ -180,10 +185,12 @@ Options:
 Enter a selection: 3
 ```
 
-To do this, you will implement the rest of the MetroTransitAPI methods in [TransitService.cpp](TransitService.cpp#L33).  You will also need to modify the `realTimeInfo(...)` method in the [main.cpp](main.cpp#L69).
+To do this, you will implement the rest of the MetroTransitAPI methods in [TransitService.cpp](TransitService.cpp#L33). You will also need to modify the `realTimeInfo(...)` method in the [main.cpp](main.cpp#L69).
 
-___
+---
+
 For **Milestone 3** your output should look similar to the following (It is okay if `[ Web Service Call: ... ]` is part of the output:
+
 ```bash
 Enter a selection: 3
 
@@ -210,8 +217,3 @@ Latitude: 45.020797
 Longitude: -93.338913
 Next Departure: 12 Min
 ```
-___
-
-## Part B - Valgrind and Debugging Practice
-
-TBD
