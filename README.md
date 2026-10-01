@@ -90,7 +90,7 @@ In this assignment, you will implement options 2 (Milestone 2) and 3 (Milestone 
 
 You are now ready to begin the Lab!
 
-## Part A - Using an API
+## Using an API
 
 ### Milestone 1 - Swagger
 
@@ -217,51 +217,4 @@ Latitude: 45.020797
 Longitude: -93.338913
 Next Departure: 12 Min
 ```
-
-## Part B - Memory Debugging Challenge (Valgrind and GDB)
-
-In Part B we will explore how to test for memory leaks and practice for debugging other common memory issues.  There are several places in the provided code, specifically in the Transit System subsystem (`TransitSystem` class) that needs to be debugged.  Your goal is to fix and remove as many as you can find.
-
-In order to accomplish this task, you will use a memory profiler program called Valgrind, which is installed on the lab machines.  You are welcome to also use GDB.  Additional hints are provided below.
-
-### To run Valgrind on your program follow the steps below:
-
-  * Make sure Valgrind is installed on your system (Valgrind is by default installed on CSE machines) by typing `valgrind` in your command prompt. If you're using your own Linux machine, on command prompt run `sudo apt install valgrind`.
-  
-  * Make sure you compile your code in debugging mode, just like the steps used above in running gdb.
-  
-  * Then, assuming your program needs two arguments `arg1 arg2`to run on the command prompt (e.g. `./program arg1 arg2`), simply run `valgrind --leak-check=yes ./program arg1 arg2`
-
-    After running valgrind, compare your output to the output below. Process IDs and allocation totals may differ by system/toolchain, but there should be no memory leaks or reported errors.
-
-    Below, we run a simple iteration of the program, immediatelly exiting.  Observe that there are no memory leaks:
-
-    ````
-    $ valgrind --leak-check=yes ./transit_service 
-
-    ==102188== Memcheck, a memory error detector
-    ==102188== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-    ==102188== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-    ==102188== Command: ./transit_service
-    ==102188== 
-
-    Options:
-    -------------------
-    0: Exit
-    1: List Agencies
-    2: List Routes
-    3: Real-Time Info
-
-    Enter a selection: 0
-
-    ==102188== 
-    ==102188== HEAP SUMMARY:
-    ==102188==     in use at exit: 0 bytes in 0 blocks
-    ==102188==   total heap usage: 1,316 allocs, 1,316 frees, 185,589 bytes allocated
-    ==102188== 
-    ==102188== All heap blocks were freed -- no leaks are possible
-    ==102188== 
-    ==102188== For lists of detected and suppressed errors, rerun with: -s
-    ==102188== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-    ````
 
