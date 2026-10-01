@@ -1,4 +1,4 @@
-# Lab 04 - Web Services and Debugging Practice
+# Lab 04 - Web Services
 
 In this lab, your goal is to create a program that uses a web service.
 
