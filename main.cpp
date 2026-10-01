@@ -9,7 +9,7 @@ void listRoutes(TransitService& service);
 void realTimeInfo(TransitService& service);
 
 int main() {
-    TransitService* service = new TransitService();
+    TransitService service = TransitService();
 
     int input = -1;
 
@@ -27,13 +27,13 @@ int main() {
             case 0:
                 break;
             case 1:
-                listAgencies(*service);
+                listAgencies(service);
                 break;
             case 2:
-                listRoutes(*service);
+                listRoutes(service);
                 break;
             case 3:
-                realTimeInfo(*service);
+                realTimeInfo(service);
                 break;
         }
 
@@ -44,20 +44,18 @@ int main() {
         }
 
     }
-    
-    delete service;
 }
 
 void listAgencies(TransitService& service) {
     std::vector<Agency> agencies = service.GetAgencies();
-    for (int i = 0; i < agencies.size(); i++) {
+    for (unsigned int i = 0; i < agencies.size(); i++) {
         std::cout << agencies[i].id  << ": " << agencies[i].name << std::endl;
     }
 }
 
 void listRoutes(TransitService& service) {
     std::vector<Route> routes = service.GetRoutes();
-    for (int i = 0; i < routes.size(); i++) {
+    for (unsigned int i = 0; i < routes.size(); i++) {
         std::cout << routes[i].id  << ": " << routes[i].name << std::endl;
     }
 }
