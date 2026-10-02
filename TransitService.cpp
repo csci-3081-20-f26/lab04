@@ -12,7 +12,7 @@ std::vector<Agency> TransitService::GetAgencies() {
     // Debug Code:
     // std::cout << result << std::endl;
     
-    for (int i = 0; i < result.size(); i++) {
+    for (unsigned int i = 0; i < result.size(); i++) {
         Agency agency;
         agency.id = result[i]["agency_id"].get<int>();
         agency.name = result[i]["agency_name"].get<std::string>();

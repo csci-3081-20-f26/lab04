@@ -7,7 +7,7 @@ In this lab, your goal is to create a program that uses a web service.
 1. How to call a web service to get information using Swagger and C++.
 2. Understanding how a facade is used to simplify complex systems.
 3. How to query json objects for information returned from a REST web service.
-4. How to use the std::vector<T> class for dynamic arrays.
+4. How to use the std::vector<T> class for dynamically sized arrays.
 5. How to get real-time transit information about buses and trains.
 
 ### What's in lab04
@@ -39,7 +39,9 @@ In this lab, your goal is to create a program that uses a web service.
 ### Goal
 
 <hr>
+
   **The primary goal of this lab is to become familiar with calling web services and using the proxy pattern to remove the expensive overhead of repeating api calls and restricting access to data.**
+
 <hr>
 
 ### Getting Started
@@ -53,6 +55,8 @@ You can run the program with the following commands using the provided `Makefile
 % make
 % ./transit_service
 ```
+
+If you are running this on your own Linux environment, you make sure to have the headers for `libcurl` installed. For Ubuntu/Debian based distros, the package should be called `libcurl4-openssl-dev`, and for Fedora based distros, the package should be called `libcurl-devel`. 
 
 When you run, you will see the following output:
 
@@ -94,9 +98,9 @@ You are now ready to begin the Lab!
 
 ### Milestone 1 - Swagger
 
-Swagger is a useful interface for accessing and trying out existing REST APIs. The first milestone for this lab entails exploring the Metro Transit NextTrip API. Navigate to the following URL:
+Swagger is a useful interface for accessing and trying out existing REST APIs. The first milestone for this lab entails exploring the Metro Transit NexTrip API. Navigate to the following URL:
 
-- [Metro Transit - NextTrip API](https://svc.metrotransit.org/swagger/index.html)
+- [Metro Transit - NexTrip API](https://svc.metrotransit.org/swagger/index.html)
 
 Investigate the various API calls. Click on “GET /nextrip/agencies”. What is the id for the agency for the “University of Minnesota”. Most likely this represents buses like the Campus Connector.
 
@@ -108,13 +112,13 @@ Use the Swagger interface to find a stop for a place of interest ([Twin Cities M
 
 ---
 
-For **Milestone 1** you should be able to understand and make web service calls using the swagger. You should be able to execute calls to find the places of interest in the Metro Transit system.
+For **Milestone 1** you should be able to understand and make web service calls using the Swagger interface. You should be able to execute calls to find the places of interest in the Metro Transit system.
 
 ---
 
 ### Milestone 2 - List Routes
 
-For this milestone, you will use your c++ program to list the routes in our system. This is option two in our program:
+For this milestone, you will use your C++ program to list the routes in our system. This is option two in our program:
 
 ```bash
 Options:
@@ -172,7 +176,7 @@ Enter a selection: 2
 
 ### Milestone 3 - Get Real-Time Info
 
-For this milestone, you will use your c++ program to list the routes in our system. This is option three in our program:
+For this milestone, you will use your C++ program to list the routes in our system. This is option three in our program:
 
 ```bash
 Options:
@@ -189,7 +193,7 @@ To do this, you will implement the rest of the MetroTransitAPI methods in [Trans
 
 ---
 
-For **Milestone 3** your output should look similar to the following (It is okay if `[ Web Service Call: ... ]` is part of the output:
+For **Milestone 3** your output should look similar to the following (It is okay if `[ Web Service Call: ... ]` is part of the output):
 
 ```bash
 Enter a selection: 3

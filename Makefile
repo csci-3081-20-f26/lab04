@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS = -std=c++11 -g
+CXXFLAGS = -std=c++17 -g
 ROOT_DIR := $(shell git rev-parse --show-toplevel)
 -include $(ROOT_DIR)/config/settings
 -include $(DEP_DIR)/env
